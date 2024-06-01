@@ -1,6 +1,6 @@
 const prizes = [50, 100, 150, 200, 250, 300, 350];
 
-const wheel = document.querySelector('.wheel');
+const wheel = document.getElementById('wheel');
 const spinBtn = document.getElementById('spinBtn');
 const resultPopup = document.getElementById('resultPopup');
 const prizeAmount = document.getElementById('prizeAmount');
