@@ -11,19 +11,59 @@ body {
 .wheel {
   width: 200px;
   height: 200px;
-  background: radial-gradient(circle, #ff6347, #ffa500, #ffff00, #00ff00, #1e90ff, #8a2be2, #ff00ff);
-  border-radius: 50%;
+  position: relative;
   margin: 0 auto;
   animation: spin 4s infinite linear;
 }
 
-@keyframes spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+.sector {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  clip-path: polygon(50% 50%, 0 0, 100% 0);
+  transform-origin: 50% 50%;
+}
+
+.sector:nth-child(1) {
+  background: #ff6347;
+  transform: var(--rotate);
+}
+
+.sector:nth-child(2) {
+  background: #ffa500;
+  transform: var(--rotate);
+}
+
+.sector:nth-child(3) {
+  background: #ffff00;
+  transform: var(--rotate);
+}
+
+.sector:nth-child(4) {
+  background: #00ff00;
+  transform: var(--rotate);
+}
+
+.sector:nth-child(5) {
+  background: #1e90ff;
+  transform: var(--rotate);
+}
+
+.sector:nth-child(6) {
+  background: #8a2be2;
+  transform: var(--rotate);
+}
+
+.sector:nth-child(7) {
+  background: #ff00ff;
+  transform: var(--rotate);
+}
+
+.sector:nth-child(8) {
+  background: #ff6347;
+  transform: var(--rotate);
 }
 
 button {
@@ -59,4 +99,13 @@ button {
 
 .popup button {
   margin-top: 10px;
+}
+
+@keyframes spin {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
 }
