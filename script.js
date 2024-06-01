@@ -1,23 +1,25 @@
-document.getElementById('spin-btn').addEventListener('click', spinWheel);
+const prizes = [50, 100, 150, 200, 250, 300, 350];
 
-function spinWheel() {
-  // สุ่มตำแหน่งของรางวัล
-  const winningPosition = Math.floor(Math.random() * 6); // สุ่มตำแหน่ง 0-5
-  // หมุนวงล้อไปยังตำแหน่งที่สุ่มได้
-  const wheel = document.querySelector('.wheel');
-  wheel.style.transition = 'transform 3s ease-out';
-  wheel.style.transform = `rotate(${winningPosition * 60 + 360}deg)`; // หมุนเพิ่มเติม 360 องศา
-  // แสดงผลป๊อปอัพและฟอร์มกรอกชื่อผู้ใช้
+const wheel = document.querySelector('.wheel');
+const spinBtn = document.getElementById('spinBtn');
+const resultPopup = document.getElementById('resultPopup');
+const prizeAmount = document.getElementById('prizeAmount');
+const usernameForm = document.getElementById('usernameForm');
+const usernameInput = document.getElementById('usernameInput');
+
+spinBtn.addEventListener('click', () => {
+  const randomRotation = Math.floor(Math.random() * 360);
+  wheel.style.animation = `spin 4s cubic-bezier(0.25, 0.1, 0.25, 1) 1 forwards`;
   setTimeout(() => {
-    const popup = document.getElementById('result-popup');
-    popup.classList.add('active');
-    const resultDisplay = document.querySelector('.result');
-    resultDisplay.textContent = `ยินดีด้วย! คุณได้รับเครดิตฟรี ${50 + winningPosition * 50}`;
-  }, 3000);
-}
+    const index = Math.floor(Math.random() * prizes.length);
+    const prize = prizes[index];
+    prizeAmount.textContent = prize;
+    resultPopup.style.display = 'block';
+  }, 4000);
+});
 
-document.getElementById('username-form').addEventListener('submit', (e) => {
+usernameForm.addEventListener('submit', (e) => {
   e.preventDefault();
-  const username = document.getElementById('username').value;
-  alert(`ยินดีด้วย ${username}! คุณได้รับรางวัลเรียบร้อยแล้ว ลิ้งค์: https://lin.ee/WXS8t3t`);
+  const username = usernameInput.value;
+  alert(`ยินดีด้วย, ${username}! คุณได้รับรางวัล ${prizeAmount.textContent} เครดิต! ไปที่ https://lin.ee/WXS8t3t เพื่อรับของขวัญ`);
 });
