@@ -2,11 +2,11 @@ document.getElementById('spin-btn').addEventListener('click', spinWheel);
 
 function spinWheel() {
   // สุ่มตำแหน่งของรางวัล
-  const winningPosition = Math.floor(Math.random() * 7);
+  const winningPosition = Math.floor(Math.random() * 6); // สุ่มตำแหน่ง 0-5
   // หมุนวงล้อไปยังตำแหน่งที่สุ่มได้
   const wheel = document.querySelector('.wheel');
   wheel.style.transition = 'transform 3s ease-out';
-  wheel.style.transform = `rotate(${winningPosition * 51.43}deg)`; // 51.43 = 360 / 7
+  wheel.style.transform = `rotate(${winningPosition * 60 + 360}deg)`; // หมุนเพิ่มเติม 360 องศา
   // แสดงผลป๊อปอัพและฟอร์มกรอกชื่อผู้ใช้
   setTimeout(() => {
     const popup = document.getElementById('result-popup');
