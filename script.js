@@ -1,38 +1,37 @@
-const wheel = document.getElementById('wheel');
-const spinBtn = document.getElementById('spinBtn');
-const popup = document.getElementById('popup');
-const resultDisplay = document.getElementById('result');
-const usernameForm = document.getElementById('usernameForm');
-
-spinBtn.addEventListener('click', spinWheel);
-usernameForm.addEventListener('submit', claimPrize);
+document.getElementById("spinButton").addEventListener("click", spinWheel);
 
 function spinWheel() {
-    // Simulate random spin position (0-360 degrees)
-    const randomAngle = Math.floor(Math.random() * 360);
-    
-    // Animate the wheel
-    wheel.style.transition = 'transform 5s ease-out';
-    wheel.style.transform = `translate(-50%, -50%) rotate(${randomAngle}deg)`;
+    var wheel = document.querySelector('.wheel');
+    var arrow = document.querySelector('.arrow');
 
-    // Show popup after spin animation ends
-    setTimeout(() => {
-        showPopup();
-    }, 5000);
+    var deg = Math.floor(5000 + Math.random() * 5000); // หมุนวงล้อระหว่าง 5000-10000 องศา
+
+    wheel.style.transition = 'transform 10s ease-out';
+    wheel.style.transform = 'rotate(' + deg + 'deg)';
+    arrow.style.transition = 'transform 10s ease-out';
+    arrow.style.transform = 'translate(-50%, -50%) rotate(1080deg)'; // หมุนลูกศร 3 รอบ
+
+    setTimeout(function() {
+        var result = getResult(deg);
+        document.getElementById("resultText").innerText = "คุณได้รับเครดิตฟรี " + result + " บาท!";
+        document.getElementById("resultPopup").style.display = "block";
+    }, 10000); // หลังจากหมุนเสร็จ 10 วินาที
 }
 
-function showPopup() {
-    popup.style.display = 'block';
+function getResult(deg) {
+    var prizes = [50, 100, 150, 200, 250, 300, 350];
+    var segments = 7;
+    var angle = 360 / segments;
+    var index = Math.floor((360 - (deg % 360)) / angle);
+    return prizes[index];
 }
 
-function claimPrize(event) {
+document.querySelector('.close').addEventListener('click', function() {
+    document.getElementById("resultPopup").style.display = "none";
+});
+
+document.getElementById("usernameForm").addEventListener("submit", function(event) {
     event.preventDefault();
-    const username = document.getElementById('username').value;
-    resultDisplay.textContent = `Congratulations, ${username}! You've won a prize!`;
-    // Reset form
-    usernameForm.reset();
-    // Hide popup after claiming prize
-    setTimeout(() => {
-        popup.style.display = 'none';
-    }, 3000);
-}
+    var username = document.getElementById("username").value;
+    alert("ยินดีด้วย! คุณได้รับรางวัลเรียบร้อยแล้ว ลิ้งค์: https://lin.ee/WXS8t3t");
+});
