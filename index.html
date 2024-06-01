@@ -1,33 +1,35 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="th">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>เว็บไซต์แจกเครดิตฟรี</title>
-<link rel="stylesheet" href="styles.css">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>วงล้อเครดิตฟรี</title>
+  <link rel="stylesheet" href="styles.css">
 </head>
 <body>
-
-<div class="container">
-    <div class="wheel">
-        <div class="arrow"></div>
+  <div class="container">
+    <div class="wheel-container">
+      <div class="wheel">
+        <!-- รางวัลที่ต้องแสดง -->
+        <div class="prize">50</div>
+        <div class="prize">100</div>
+        <div class="prize">150</div>
+        <div class="prize">200</div>
+        <div class="prize">250</div>
+        <div class="prize">300</div>
+        <div class="prize">350</div>
+      </div>
+      <div class="arrow"></div>
+      <button id="spin-btn">หมุน</button>
     </div>
-    <button id="spinButton">หมุน</button>
-</div>
-
-<div id="resultPopup" class="popup">
-    <div class="popup-content">
-        <span class="close">&times;</span>
-        <p id="resultText"></p>
-        <form id="usernameForm">
-            <label for="username">ชื่อผู้ใช้:</label>
-            <input type="text" id="username" name="username">
-            <button type="submit">ยืนยัน</button>
-        </form>
+    <div id="result-popup" class="popup">
+      <div class="result"></div>
+      <form id="username-form">
+        <input type="text" id="username" placeholder="ใส่ชื่อผู้ใช้">
+        <button type="submit">ยืนยัน</button>
+      </form>
     </div>
-</div>
-
-<script src="script.js"></script>
-
+  </div>
+  <script src="script.js"></script>
 </body>
 </html>
