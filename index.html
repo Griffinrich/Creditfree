@@ -1,24 +1,25 @@
 <!DOCTYPE html>
-<html lang="th">
+<html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>วงล้อหมุน</title>
+    <title>Spin Wheel</title>
     <link rel="stylesheet" href="styles.css">
 </head>
 <body>
     <div class="container">
-        <div id="wheel"></div>
-        <button id="spinButton">หมุน</button>
-        <div id="resultPopup" class="popup">
-            <h2>ยินดีด้วย!</h2>
-            <p>คุณได้รับเครดิต <span id="prizeAmount"></span> บาท!</p>
-            <form id="usernameForm">
-                <label for="username">กรุณาใส่ชื่อผู้ใช้:</label>
-                <input type="text" id="username" name="username" required>
-                <button type="submit">รับรางวัล</button>
-            </form>
+        <div id="wheel" class="wheel">
+            <div class="circle"></div>
+            <div class="pointer"></div>
         </div>
+        <button id="spinBtn">Spin</button>
+    </div>
+    <div id="popup" class="popup">
+        <p id="result" class="result"></p>
+        <form id="usernameForm">
+            <input type="text" id="username" placeholder="Enter your username">
+            <button type="submit">Claim Prize</button>
+        </form>
     </div>
     <script src="script.js"></script>
 </body>
