@@ -1,62 +1,111 @@
 body {
     font-family: Arial, sans-serif;
-    background-color: #f0f8ff; /* สีฟ้าอ่อน */
+    background-color: #f0f0f0; /* พื้นหลังสีเทาอ่อน */
 }
 
 .container {
-    text-align: center;
-    margin-top: 50px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: 100vh;
 }
 
-#wheel {
-    width: 300px;
-    height: 300px;
-    background-color: #ff69b4; /* สีชมพู */
+.wheel {
+    position: relative;
+    width: 200px;
+    height: 200px;
+    margin-bottom: 20px;
+}
+
+.circle {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 200px;
+    height: 200px;
+    background: conic-gradient(
+        #FFD700 0%,
+        #FF4500 25%,
+        #FF8C00 50%,
+        #FF4500 75%,
+        #FFD700 100%
+    );
     border-radius: 50%;
-    margin: 0 auto;
+    box-shadow: 0px 0px 20px rgba(0, 0, 0, 0.5);
+    animation: rotate 5s linear infinite;
 }
 
-#spinButton {
-    margin-top: 20px;
+@keyframes rotate {
+    100% {
+        transform: translate(-50%, -50%) rotate(360deg);
+    }
+}
+
+.pointer {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%) rotate(0deg);
+    width: 10px;
+    height: 10px;
+    background-color: red; /* สีแดง */
+    border-radius: 50%;
+    z-index: 1;
+}
+
+#spinBtn {
     padding: 10px 20px;
-    font-size: 18px;
-    background-color: #00bfff; /* สีฟ้า */
+    background-color: #4CAF50; /* สีเขียว */
+    color: white;
     border: none;
     border-radius: 5px;
-    color: white;
     cursor: pointer;
 }
 
+/* Popup styles */
 .popup {
     display: none;
     position: fixed;
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
-    background-color: #ffff00; /* สีเหลือง */
+    background-color: white;
     padding: 20px;
-    border-radius: 10px;
-    box-shadow: 0px 0px 10px 2px rgba(0, 0, 0, 0.3);
+    border-radius: 5px;
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
 }
 
-.popup h2 {
+.result {
+    font-weight: bold;
     margin-bottom: 10px;
 }
 
 #usernameForm {
-    margin-top: 20px;
+    display: flex;
+    justify-content: center;
 }
 
 #username {
-    padding: 5px;
+    padding: 8px;
     margin-right: 10px;
+    border-radius: 5px;
+    border: 1px solid #ccc;
 }
 
 #usernameForm button {
-    padding: 5px 10px;
-    background-color: #32cd32; /* สีเขียว */
-    border: none;
-    border-radius: 5px;
+    background-color: #4CAF50;
     color: white;
+    border: none;
+    padding: 8px 20px;
+    text-align: center;
+    text-decoration: none;
+    font-size: 16px;
     cursor: pointer;
+    border-radius: 5px;
+}
+
+#usernameForm button:hover {
+    background-color: #45a049;
 }
