@@ -3,31 +3,18 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>แจกเครดิตฟรีด้วยการหมุนวงล้อ</title>
+  <title>หมุนวงล้อเพื่อรับเครดิตฟรี</title>
   <link rel="stylesheet" href="styles.css">
 </head>
 <body>
   <div class="container">
-    <div class="wheel-container">
-      <div class="wheel">
-        <!-- สร้างวงล้อ -->
-        <div class="slice" style="--start: 0deg; --end: 60deg; background-color: #ff9966;"></div>
-        <div class="slice" style="--start: 60deg; --end: 120deg; background-color: #ffcc66;"></div>
-        <div class="slice" style="--start: 120deg; --end: 180deg; background-color: #66ff99;"></div>
-        <div class="slice" style="--start: 180deg; --end: 240deg; background-color: #66ccff;"></div>
-        <div class="slice" style="--start: 240deg; --end: 300deg; background-color: #6666ff;"></div>
-        <div class="slice" style="--start: 300deg; --end: 360deg; background-color: #cc66ff;"></div>
-        <div class="pointer"></div>
-      </div>
-      <!-- ปุ่มหมุน -->
-      <button id="spin-btn">หมุน</button>
-    </div>
-    <!-- ป๊อปอัพแสดงผลรางวัล -->
-    <div id="result-popup" class="popup">
-      <div class="result"></div>
-      <!-- ฟอร์มกรอกชื่อผู้ใช้ -->
-      <form id="username-form">
-        <input type="text" id="username" placeholder="ใส่ชื่อผู้ใช้">
+    <div class="wheel"></div>
+    <button id="spinBtn">หมุน</button>
+    <div id="resultPopup" class="popup">
+      <h2>ยินดีด้วย!</h2>
+      <p>คุณได้รับเครดิตฟรี <span id="prizeAmount"></span> บาท!</p>
+      <form id="usernameForm">
+        <input type="text" id="usernameInput" placeholder="กรอกชื่อผู้ใช้ของคุณ">
         <button type="submit">ยืนยัน</button>
       </form>
     </div>
