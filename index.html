@@ -10,16 +10,14 @@
   <div class="container">
     <div class="wheel-container">
       <div class="wheel">
-        <!-- รางวัลที่ต้องแสดง -->
-        <div class="prize">50</div>
-        <div class="prize">100</div>
-        <div class="prize">150</div>
-        <div class="prize">200</div>
-        <div class="prize">250</div>
-        <div class="prize">300</div>
-        <div class="prize">350</div>
+        <div class="slice" style="--start: 0deg; --end: 60deg; background-color: #ff9966;"></div>
+        <div class="slice" style="--start: 60deg; --end: 120deg; background-color: #ffcc66;"></div>
+        <div class="slice" style="--start: 120deg; --end: 180deg; background-color: #66ff99;"></div>
+        <div class="slice" style="--start: 180deg; --end: 240deg; background-color: #66ccff;"></div>
+        <div class="slice" style="--start: 240deg; --end: 300deg; background-color: #6666ff;"></div>
+        <div class="slice" style="--start: 300deg; --end: 360deg; background-color: #cc66ff;"></div>
+        <div class="pointer"></div>
       </div>
-      <div class="arrow"></div>
       <button id="spin-btn">หมุน</button>
     </div>
     <div id="result-popup" class="popup">
