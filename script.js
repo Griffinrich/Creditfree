@@ -1,26 +1,38 @@
-// ฟังก์ชันสำหรับสุ่มเงินรางวัล
-function getRandomPrize() {
-    return [50, 100, 150, 200, 250, 300, 350][Math.floor(Math.random() * 7)];
-}
+const wheel = document.getElementById('wheel');
+const spinBtn = document.getElementById('spinBtn');
+const popup = document.getElementById('popup');
+const resultDisplay = document.getElementById('result');
+const usernameForm = document.getElementById('usernameForm');
 
-// ฟังก์ชันสำหรับหมุนวงล้อ
+spinBtn.addEventListener('click', spinWheel);
+usernameForm.addEventListener('submit', claimPrize);
+
 function spinWheel() {
-    // จำลองการหมุน
-    let spinResult = getRandomPrize();
+    // Simulate random spin position (0-360 degrees)
+    const randomAngle = Math.floor(Math.random() * 360);
+    
+    // Animate the wheel
+    wheel.style.transition = 'transform 5s ease-out';
+    wheel.style.transform = `translate(-50%, -50%) rotate(${randomAngle}deg)`;
 
-    // แสดงป๊อปอัพผลลัพธ์
-    document.getElementById("prizeAmount").textContent = spinResult;
-    document.getElementById("resultPopup").style.display = "block";
+    // Show popup after spin animation ends
+    setTimeout(() => {
+        showPopup();
+    }, 5000);
 }
 
-// ตัวฟังก์ชันสำหรับฟังก์ชันคลิกปุ่มหมุน
-document.getElementById("spinButton").addEventListener("click", spinWheel);
+function showPopup() {
+    popup.style.display = 'block';
+}
 
-// ตัวฟังก์ชันสำหรับการส่งฟอร์มชื่อผู้ใช้
-document.getElementById("usernameForm").addEventListener("submit", function(event) {
+function claimPrize(event) {
     event.preventDefault();
-    let username = document.getElementById("username").value;
-    alert("ยินดีด้วย, " + username + "! คุณได้รับรางวัลของคุณแล้ว!");
-    // ไปยังลิงก์รางวัล
-    window.location.href = "https://lin.ee/WXS8t3t";
-});
+    const username = document.getElementById('username').value;
+    resultDisplay.textContent = `Congratulations, ${username}! You've won a prize!`;
+    // Reset form
+    usernameForm.reset();
+    // Hide popup after claiming prize
+    setTimeout(() => {
+        popup.style.display = 'none';
+    }, 3000);
+}
