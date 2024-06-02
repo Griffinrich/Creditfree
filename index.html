@@ -1,26 +1,24 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>เกมหมุนวงล้อ</title>
-    <link rel="stylesheet" href="styles.css">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>เว็บไซต์แจกเครดิตฟรี</title>
+  <link rel="stylesheet" href="styles.css">
 </head>
 <body>
-    <div class="container">
-        <h1>เกมหมุนวงล้อแจกรางวัล</h1>
-        <div class="wheel" id="wheel">
-            <div class="segment">50</div>
-            <div class="segment">100</div>
-            <div class="segment">150</div>
-            <div class="segment">200</div>
-            <div class="segment">250</div>
-            <div class="segment">300</div>
-            <div class="segment">350</div>
-        </div>
-        <button id="spinButton">หมุนวงล้อ</button>
-        <div id="result"></div>
+  <div class="container">
+    <div class="wheel"></div>
+    <button id="spinBtn">หมุน</button>
+    <div id="resultPopup" class="popup">
+      <p>ยินดีด้วย! คุณได้รับเครดิตฟรี</p>
+      <form>
+        <label for="username">ชื่อผู้ใช้:</label>
+        <input type="text" id="username" name="username">
+        <button type="submit">ยืนยัน</button>
+      </form>
     </div>
-    <script src="script.js"></script>
+  </div>
+  <script src="script.js"></script>
 </body>
 </html>
