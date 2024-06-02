@@ -1,6 +1,5 @@
 body {
-    font-family: 'Kanit', sans-serif;
-    background-color: #f4f4f4;
+    font-family: Arial, sans-serif;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -10,6 +9,7 @@ body {
 
 .container {
     position: relative;
+    text-align: center;
 }
 
 #spinBtn {
@@ -48,28 +48,4 @@ body {
     padding: 20px;
     border-radius: 5px;
     text-align: center;
-}
-
-.popup form {
-    margin-top: 10px;
-}
-
-.popup form input[type="text"] {
-    padding: 8px;
-    width: 200px;
-}
-
-.popup form button {
-    padding: 8px 20px;
-    margin-left: 5px;
-    cursor: pointer;
-    border: none;
-    background-color: #4CAF50;
-    color: white;
-    border-radius: 5px;
-    transition: background-color 0.3s;
-}
-
-.popup form button:hover {
-    background-color: #45a049;
 }
