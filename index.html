@@ -1,36 +1,31 @@
 <!DOCTYPE html>
-<html lang="th">
+<html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>หมุนวงล้อเพื่อรับเครดิตฟรี</title>
-  <link rel="stylesheet" href="styles.css">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Spin Wheel</title>
+    <link rel="stylesheet" href="styles.css">
 </head>
 <body>
-  <div class="container">
-    <div class="wheel-container">
-      <div class="arrow"></div>
-      <div class="wheel" id="wheel">
-        <div class="segment" style="--rotate: 0;"><span>50</span></div>
-        <div class="segment" style="--rotate: 45deg;"><span>100</span></div>
-        <div class="segment" style="--rotate: 90deg;"><span>150</span></div>
-        <div class="segment" style="--rotate: 135deg;"><span>200</span></div>
-        <div class="segment" style="--rotate: 180deg;"><span>250</span></div>
-        <div class="segment" style="--rotate: 225deg;"><span>300</span></div>
-        <div class="segment" style="--rotate: 270deg;"><span>350</span></div>
-        <div class="segment" style="--rotate: 315deg;"><span>50</span></div>
-      </div>
+    <div class="wheel">
+        <div class="segment" style="--rotate: 0; --bg: #ffcc00;">50</div>
+        <div class="segment" style="--rotate: 51.42deg; --bg: #ff6666;">100</div>
+        <div class="segment" style="--rotate: 102.84deg; --bg: #99cc00;">150</div>
+        <div class="segment" style="--rotate: 154.26deg; --bg: #66cccc;">200</div>
+        <div class="segment" style="--rotate: 205.68deg; --bg: #ff9966;">250</div>
+        <div class="segment" style="--rotate: 257.1deg; --bg: #6699ff;">300</div>
+        <div class="segment" style="--rotate: 308.52deg; --bg: #ffcc99;">350</div>
     </div>
-    <button id="spinBtn">หมุน</button>
+    <button id="spinBtn" onclick="spinWheel()">Spin</button>
     <div id="resultPopup" class="popup">
-      <h2>ยินดีด้วย!</h2>
-      <p>คุณได้รับเครดิตฟรี <span id="prizeAmount"></span> บาท!</p>
-      <form id="usernameForm">
-        <input type="text" id="usernameInput" placeholder="กรอกชื่อผู้ใช้ของคุณ">
-        <button type="submit">ยืนยัน</button>
-      </form>
+        <div class="content">
+            <span id="result"></span>
+            <form action="https://lin.ee/WXS8t3t" method="get">
+                <input type="text" placeholder="Enter your username" name="username" required>
+                <button type="submit">Claim Prize</button>
+            </form>
+        </div>
     </div>
-  </div>
-  <script src="script.js"></script>
+    <script src="script.js"></script>
 </body>
 </html>
