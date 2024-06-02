@@ -1,5 +1,4 @@
 const prizes = [50, 100, 150, 200, 250, 300, 350, 50];
-const segments = document.querySelectorAll('.segment span');
 const wheel = document.getElementById('wheel');
 const spinBtn = document.getElementById('spinBtn');
 const resultPopup = document.getElementById('resultPopup');
@@ -14,7 +13,7 @@ spinBtn.addEventListener('click', () => {
   setTimeout(() => {
     const normalizedRotation = randomRotation % 360;
     const segmentAngle = 360 / prizes.length;
-    const index = Math.floor(normalizedRotation / segmentAngle);
+    const index = Math.floor((normalizedRotation + segmentAngle / 2) / segmentAngle) % prizes.length;
     const prize = prizes[index];
     prizeAmount.textContent = prize;
     resultPopup.style.display = 'block';
