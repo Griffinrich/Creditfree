@@ -19,6 +19,16 @@ body {
   border-radius: 50%;
   border: 5px solid #ddd;
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  position: relative;
+  overflow: hidden;
+  transform: rotate(0deg);
+  transition: transform 4s cubic-bezier(0.25, 0.1, 0.25, 1);
+}
+
+.segment {
+  position: absolute;
+  width: 50%;
+  height: 50%;
   background: conic-gradient(
     #ff6347 0% 12.5%,
     #ffa500 12.5% 25%,
@@ -29,6 +39,17 @@ body {
     #ff00ff 75% 87.5%,
     #ff6347 87.5% 100%
   );
+  clip-path: polygon(0 0, 100% 0, 50% 100%);
+  transform-origin: 100% 100%;
+}
+
+.segment span {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%) rotate(-45deg);
+  font-size: 14px;
+  color: white;
 }
 
 .arrow {
