@@ -1,27 +1,23 @@
-const wheel = document.getElementById('wheel');
-const spinButton = document.getElementById('spinButton');
-const resultDiv = document.getElementById('result');
+const spinBtn = document.getElementById('spinBtn');
+const resultPopup = document.getElementById('resultPopup');
 
-let spinning = false;
-
-spinButton.addEventListener('click', () => {
-    if (!spinning) {
-        spinning = true;
-        const randomAngle = Math.floor(Math.random() * 3600) + 360;
-        wheel.style.transition = 'transform 3s ease-out';
-        wheel.style.transform = `rotate(${randomAngle}deg)`;
-
-        setTimeout(() => {
-            const winningSegment = calculateWinningSegment(randomAngle % 360);
-            resultDiv.textContent = `คุณได้รางวัล ${winningSegment} บาท`;
-            spinning = false;
-        }, 3000);
-    }
+spinBtn.addEventListener('click', () => {
+  const randomDegrees = Math.floor(Math.random() * 360);
+  const wheel = document.querySelector('.wheel');
+  wheel.style.animation = `spin 4s ease-out`;
+  setTimeout(() => {
+    wheel.style.animation = '';
+    showResultPopup();
+  }, 4000);
 });
 
-function calculateWinningSegment(angle) {
-    const segmentAngle = 360 / 7;
-    const segmentIndex = Math.floor(angle / segmentAngle);
-    const prizes = [50, 100, 150, 200, 250, 300, 350];
-    return prizes[segmentIndex];
+function showResultPopup() {
+  resultPopup.style.display = 'block';
+  const form = resultPopup.querySelector('form');
+  form.addEventListener('submit', (e) => {
+    e.preventDefault();
+    const username = form.querySelector('#username').value;
+    alert(`ยินดีด้วย ${username}! คุณได้รับเครดิตฟรีแล้ว`);
+    window.location.href = 'https://lin.ee/WXS8t3t';
+  });
 }
