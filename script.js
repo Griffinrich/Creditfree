@@ -1,26 +1,23 @@
-const segments = document.querySelectorAll('.segment');
-const spinBtn = document.getElementById('spinBtn');
-const resultPopup = document.getElementById('resultPopup');
-const resultText = document.getElementById('result');
-
-let spinning = false;
-
-function getRandomAngle() {
-    return Math.floor(Math.random() * 360);
-}
-
-function spinWheel() {
-    if (spinning) return;
-    spinning = true;
-    const angle = getRandomAngle();
-    const segmentIndex = Math.floor(angle / (360 / segments.length));
-    const targetAngle = 360 * 5 + angle;
-    const rotation = `rotate(${targetAngle}deg)`;
-    document.documentElement.style.setProperty('--rotation', rotation);
-
-    setTimeout(() => {
-        resultText.textContent = segments[segmentIndex].textContent;
-        resultPopup.style.display = 'flex';
-        spinning = false;
-    }, 6000);
-}
+<!DOCTYPE html>
+<html lang="th">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>วงล้อเครดิตฟรี</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <canvas id="wheelCanvas" width="300" height="300"></canvas>
+    <button id="spinBtn" onclick="spinWheel()">หมุน</button>
+    <div id="resultPopup" class="popup">
+        <div class="content">
+            <span id="result"></span>
+            <form action="https://lin.ee/WXS8t3t" method="get">
+                <input type="text" placeholder="กรอกชื่อผู้ใช้" name="username" required>
+                <button type="submit">รับรางวัล</button>
+            </form>
+        </div>
+    </div>
+    <script src="script.js"></script>
+</body>
+</html>
