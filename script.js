@@ -4,6 +4,15 @@ var ctx = canvas.getContext('2d');
 // สร้างอาเรย์เก็บรางวัล
 var prizes = ['50', '100', '150', '200', '250', '300', '350'];
 
+// กำหนดค่าการหมุน
+var spinParams = {
+    speed: 0, // ความเร็วเริ่มต้น (จะเปลี่ยนไปตามการกำหนดค่าในฟังก์ชัน spinWheel())
+    acceleration: 1, // ค่าความเร่งของการหมุน
+    maxSpeed: 10, // ความเร็วสูงสุด
+    stopAngle: 0, // มุมที่วงล้อจะหยุดที่
+    isSpinning: false // สถานะการหมุน (true = กำลังหมุน, false = หยุด)
+};
+
 function drawWheel() {
     // เริ่มต้นให้ Canvas เป็นวงล้อเปล่า
     ctx.clearRect(0, 0, canvas.width, canvas.height);
@@ -39,25 +48,34 @@ function drawWheel() {
 }
 
 function spinWheel() {
-    // สุ่มรางวัลที่จะหมุนมา
-    var randomIndex = Math.floor(Math.random() * prizes.length);
-    var prize = prizes[randomIndex];
+    if (!spinParams.isSpinning) {
+        // สุ่มรางวัลที่จะหมุนมา
+        var randomIndex = Math.floor(Math.random() * prizes.length);
+        var prize = prizes[randomIndex];
 
-    // หมุนวงล้อ
-    var spinAngle = Math.floor(Math.random() * 360) + 720; // 720 - 1080 องศา (2 - 3 รอบ)
-    var spinDuration = 3000; // 3 วินาที
-    var spinInterval = 50; // ความเร็วของการหมุน
-    var currentAngle = 0;
+        // สร้างค่าที่จะใช้ในการหมุน
+        spinParams.speed = 1; // ความเร็วเริ่มต้น
+        spinParams.acceleration = 0.1; // ค่าความเร่งของการหมุน
+        spinParams.maxSpeed = 10; // ความเร็วสูงสุด
+        spinParams.stopAngle = Math.floor(Math.random() * 360) + 720; // มุมที่วงล้อจะหยุดที่
+        spinParams.isSpinning = true; // กำลังหมุน
+        startSpin(prize);
+    }
+}
 
-    var spinIntervalId = setInterval(function() {
-        currentAngle += spinInterval;
-        drawWheelWithAngle(currentAngle);
-
-        if (currentAngle >= spinAngle) {
-            clearInterval(spinIntervalId);
-            showResult(prize);
+function startSpin(prize) {
+    var spinInterval = setInterval(function() {
+        spinParams.speed += spinParams.acceleration;
+        if (spinParams.speed >= spinParams.maxSpeed) {
+            spinParams.speed = spinParams.maxSpeed;
         }
-    }, spinInterval);
+        drawWheelWithAngle(spinParams.speed);
+        if (spinParams.speed >= spinParams.stopAngle) {
+            clearInterval(spinInterval);
+            showResult(prize);
+            spinParams.isSpinning = false;
+        }
+    }, 50);
 }
 
 function drawWheelWithAngle(angle) {
@@ -71,9 +89,4 @@ function drawWheelWithAngle(angle) {
 }
 
 function showResult(prize) {
-    document.getElementById('result').innerText = 'คุณได้รับรางวัล ' + prize + ' บาท!';
-    document.getElementById('resultPopup').style.display = 'flex';
-}
-
-// เริ่มต้นด้วยการสร้างวงล้อ
-drawWheel();
+    document.getElementById('result').innerText = 'คุณได้รับรางวัล ' + prize +
