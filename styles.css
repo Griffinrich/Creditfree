@@ -42,6 +42,15 @@ body {
   clip-path: polygon(0 0, 100% 0, 50% 100%);
 }
 
+.segment:nth-child(1) { --i: 0; }
+.segment:nth-child(2) { --i: 1; }
+.segment:nth-child(3) { --i: 2; }
+.segment:nth-child(4) { --i: 3; }
+.segment:nth-child(5) { --i: 4; }
+.segment:nth-child(6) { --i: 5; }
+.segment:nth-child(7) { --i: 6; }
+.segment:nth-child(8) { --i: 7; }
+
 .segment span {
   position: absolute;
   top: 50%;
@@ -50,6 +59,7 @@ body {
   font-size: 18px;
   color: white;
   text-shadow: 0 0 5px rgba(0, 0, 0, 0.5);
+  transform: rotate(calc(-360 / 8 * var(--i)));
 }
 
 .arrow {
