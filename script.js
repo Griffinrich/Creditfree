@@ -1,7 +1,13 @@
 var canvas = document.getElementById('wheelCanvas');
 var ctx = canvas.getContext('2d');
 
+// สร้างอาเรย์เก็บรางวัล
+var prizes = ['50', '100', '150', '200', '250', '300', '350'];
+
 function drawWheel() {
+    // เริ่มต้นให้ Canvas เป็นวงล้อเปล่า
+    ctx.clearRect(0, 0, canvas.width, canvas.height);
+
     // สร้างวงล้อ
     ctx.beginPath();
     ctx.arc(150, 150, 140, 0, 2 * Math.PI);
@@ -20,21 +26,54 @@ function drawWheel() {
     }
 
     // เพิ่มข้อความ
-    var texts = ['50', '100', '150', '200', '250', '300', '350'];
     ctx.fillStyle = 'white';
     ctx.font = '20px Arial';
     ctx.textAlign = 'center';
     ctx.textBaseline = 'middle';
-    for (var i = 0; i < texts.length; i++) {
+    for (var i = 0; i < prizes.length; i++) {
         var angle = angles[i] * Math.PI / 180;
         var x = 150 + Math.cos(angle) * 100;
         var y = 150 + Math.sin(angle) * 100;
-        ctx.fillText(texts[i], x, y);
+        ctx.fillText(prizes[i], x, y);
     }
 }
 
 function spinWheel() {
-    drawWheel(); // เรียกใช้ฟังก์ชันสำหรับสร้างวงล้อ
-    var imageDataURL = canvas.toDataURL('image/png');
-    console.log(imageDataURL); // ดึงรูปภาพจาก Canvas และพิมพ์ URL ในคอนโซล
+    // สุ่มรางวัลที่จะหมุนมา
+    var randomIndex = Math.floor(Math.random() * prizes.length);
+    var prize = prizes[randomIndex];
+
+    // หมุนวงล้อ
+    var spinAngle = Math.floor(Math.random() * 360) + 720; // 720 - 1080 องศา (2 - 3 รอบ)
+    var spinDuration = 3000; // 3 วินาที
+    var spinInterval = 50; // ความเร็วของการหมุน
+    var currentAngle = 0;
+
+    var spinIntervalId = setInterval(function() {
+        currentAngle += spinInterval;
+        drawWheelWithAngle(currentAngle);
+
+        if (currentAngle >= spinAngle) {
+            clearInterval(spinIntervalId);
+            showResult(prize);
+        }
+    }, spinInterval);
 }
+
+function drawWheelWithAngle(angle) {
+    drawWheel();
+    ctx.save();
+    ctx.translate(canvas.width / 2, canvas.height / 2);
+    ctx.rotate(angle * Math.PI / 180);
+    ctx.translate(-canvas.width / 2, -canvas.height / 2);
+    drawWheel();
+    ctx.restore();
+}
+
+function showResult(prize) {
+    document.getElementById('result').innerText = 'คุณได้รับรางวัล ' + prize + ' บาท!';
+    document.getElementById('resultPopup').style.display = 'flex';
+}
+
+// เริ่มต้นด้วยการสร้างวงล้อ
+drawWheel();
