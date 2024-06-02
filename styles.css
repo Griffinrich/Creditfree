@@ -8,8 +8,15 @@ body {
     margin: 0;
 }
 
+.container {
+    position: relative;
+}
+
 #spinBtn {
-    margin-top: 20px;
+    position: absolute;
+    bottom: 20px;
+    left: 50%;
+    transform: translateX(-50%);
     font-size: 16px;
     padding: 10px 20px;
     cursor: pointer;
