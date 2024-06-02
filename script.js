@@ -35,22 +35,9 @@ function spinWheel() {
     var spinAngle = Math.floor(Math.random() * 360) + 720;
     var spinInterval = setInterval(function() {
         drawWheelWithAngle(Math.random() * 360);
+        document.getElementById('spinBtn').disabled = true;
     }, 100);
     setTimeout(function() {
         clearInterval(spinInterval);
+        document.getElementById('spinBtn').disabled = false;
         var prizeIndex = Math.floor(Math.random() * prizes.length);
-        var prize = prizes[prizeIndex];
-        document.getElementById('result').innerText = 'ยินดีด้วยคุณได้รับ ' + prize + ' เครดิตฟรี';
-        document.getElementById('resultPopup').style.display = 'flex';
-    }, 3000);
-}
-
-function drawWheelWithAngle(angle) {
-    drawWheel();
-    ctx.save();
-    ctx.translate(canvas.width / 2, canvas.height / 2);
-    ctx.rotate(angle * Math.PI / 180);
-    ctx.translate(-canvas.width / 2, -canvas.height / 2);
-    drawWheel();
-    ctx.restore();
-}
