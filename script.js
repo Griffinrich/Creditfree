@@ -1,28 +1,26 @@
-const prizes = [50, 100, 150, 200, 250, 300, 350, 50];
-const wheel = document.getElementById('wheel');
+const segments = document.querySelectorAll('.segment');
 const spinBtn = document.getElementById('spinBtn');
 const resultPopup = document.getElementById('resultPopup');
-const prizeAmount = document.getElementById('prizeAmount');
-const usernameForm = document.getElementById('usernameForm');
-const usernameInput = document.getElementById('usernameInput');
+const resultText = document.getElementById('result');
 
-spinBtn.addEventListener('click', () => {
-  const randomRotation = Math.floor(Math.random() * 360) + 1440; // Ensure multiple rotations
-  wheel.style.transform = `rotate(${randomRotation}deg)`;
+let spinning = false;
 
-  setTimeout(() => {
-    const normalizedRotation = randomRotation % 360;
-    const segmentAngle = 360 / prizes.length;
-    const index = Math.floor((normalizedRotation + segmentAngle / 2) / segmentAngle) % prizes.length;
-    const prize = prizes[index];
-    prizeAmount.textContent = prize;
-    resultPopup.style.display = 'block';
-  }, 4000);
-});
+function getRandomAngle() {
+    return Math.floor(Math.random() * 360);
+}
 
-usernameForm.addEventListener('submit', (e) => {
-  e.preventDefault();
-  const username = usernameInput.value;
-  alert(`ยินดีด้วย, ${username}! คุณได้รับรางวัล ${prizeAmount.textContent} เครดิต! ไปที่ https://lin.ee/WXS8t3t เพื่อรับของขวัญ`);
-  resultPopup.style.display = 'none';
-});
+function spinWheel() {
+    if (spinning) return;
+    spinning = true;
+    const angle = getRandomAngle();
+    const segmentIndex = Math.floor(angle / (360 / segments.length));
+    const targetAngle = 360 * 5 + angle;
+    const rotation = `rotate(${targetAngle}deg)`;
+    document.documentElement.style.setProperty('--rotation', rotation);
+
+    setTimeout(() => {
+        resultText.textContent = segments[segmentIndex].textContent;
+        resultPopup.style.display = 'flex';
+        spinning = false;
+    }, 6000);
+}
