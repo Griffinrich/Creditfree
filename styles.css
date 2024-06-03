@@ -1,4 +1,18 @@
-/* เปลี่ยนสีของวงล้อ */
+body {
+  background-color: #f0f8ff;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  margin: 0;
+  font-family: Arial, sans-serif;
+}
+
+.container {
+  position: relative;
+  text-align: center;
+}
+
 .wheel-container {
   position: relative;
   display: inline-block;
@@ -16,14 +30,14 @@
   transform: translateX(-50%);
 }
 
-/* สีของวงล้อแต่ละส่วน */
-.wheel-container canvas {
-  background-color: #FFFFFF;
-}
-
-/* เปลี่ยนสีของตัวเลขในวงล้อ */
-.wheel-container canvas {
-  color: #FFD700;
+button {
+  margin-top: 20px;
+  padding: 10px 20px;
+  background-color: #4682b4;
+  color: #fff;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
 }
 
 .popup {
@@ -32,7 +46,7 @@
   left: 50%;
   transform: translate(-50%, -50%);
   padding: 20px;
-  background-color: #FF0000;
+  background-color: #87cefa;
   border-radius: 10px;
   display: none;
 }
@@ -59,7 +73,7 @@
   align-self: flex-end;
 }
 
-/* เพิ่มเอฟเฟกต์พลุ */
+/* Fireworks CSS */
 #fireworks-container {
   position: fixed;
   top: 0;
