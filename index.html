@@ -8,11 +8,14 @@
 </head>
 <body>
   <div class="container">
-    <div class="wheel"></div>
+    <div class="wheel-container">
+      <div class="arrow"></div>
+      <canvas id="wheel" width="500" height="500"></canvas>
+    </div>
     <button id="spinBtn">หมุน</button>
     <div id="resultPopup" class="popup">
-      <p>ยินดีด้วย! คุณได้รับเครดิตฟรี</p>
-      <form>
+      <p id="resultText"></p>
+      <form id="resultForm">
         <label for="username">ชื่อผู้ใช้:</label>
         <input type="text" id="username" name="username">
         <button type="submit">ยืนยัน</button>
