@@ -13,10 +13,6 @@ body {
   text-align: center;
 }
 
-.title {
-  margin-bottom: 20px;
-}
-
 .wheel-container {
   position: relative;
   display: inline-block;
