@@ -94,7 +94,7 @@ button {
   border-radius: 50%;
   opacity: 0;
   pointer-events: none;
-  animation: explode 1s ease-out;
+  animation: explode 1.5s ease-out; /* เพิ่มระยะเวลา animation */
 }
 
 @keyframes explode {
