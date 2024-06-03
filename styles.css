@@ -3,9 +3,14 @@ body {
   display: flex;
   justify-content: center;
   align-items: center;
+  flex-direction: column; /* เพิ่ม flex-direction: column; */
   height: 100vh;
   margin: 0;
   font-family: Arial, sans-serif;
+}
+
+h1 {
+  margin-bottom: 20px; /* เพิ่ม margin-bottom ให้กับข้อความ */
 }
 
 .container {
@@ -89,4 +94,16 @@ button {
   border-radius: 50%;
   opacity: 0;
   pointer-events: none;
+  animation: explode 1s ease-out;
+}
+
+@keyframes explode {
+  0% {
+    opacity: 1;
+    transform: scale(0);
+  }
+  100% {
+    opacity: 0;
+    transform: scale(2);
+  }
 }
