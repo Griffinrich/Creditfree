@@ -3,14 +3,14 @@ body {
   display: flex;
   justify-content: center;
   align-items: center;
-  flex-direction: column; /* เพิ่ม flex-direction: column; */
+  flex-direction: column;
   height: 100vh;
   margin: 0;
   font-family: Arial, sans-serif;
 }
 
 h1 {
-  margin-bottom: 20px; /* เพิ่ม margin-bottom ให้กับข้อความ */
+  margin-bottom: 20px;
 }
 
 .container {
@@ -94,7 +94,7 @@ button {
   border-radius: 50%;
   opacity: 0;
   pointer-events: none;
-  animation: explode 1.5s ease-out; /* เพิ่มระยะเวลา animation */
+  animation: explode 1.5s ease-out;
 }
 
 @keyframes explode {
