@@ -86,17 +86,17 @@ function animateFirework(firework) {
   firework.style.left = `${x}px`;
   firework.style.top = `${y}px`;
   firework.style.opacity = '1';
-  firework.style.transition = 'opacity 1.5s ease-out, transform 1.5s ease-out';
+  firework.style.transition = 'opacity 1s ease-out, transform 1s ease-out';
   firework.style.transform = 'scale(2)';
 
   setTimeout(() => {
     firework.style.opacity = '0';
     firework.style.transform = 'scale(0)';
-  }, 100);
+  }, 1000);
 
   setTimeout(() => {
     fireworksContainer.removeChild(firework);
-  }, 1600);
+  }, 2000);
 }
 
 spinBtn.addEventListener('click', startSpin);
