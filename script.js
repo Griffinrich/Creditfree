@@ -67,7 +67,7 @@ function startSpin() {
 }
 
 function showFireworks() {
-  for (let i = 0; i < 20; i++) {
+  for (let i = 0; i < 40; i++) {  // เพิ่มจำนวนพลุ
     const firework = document.createElement('div');
     firework.className = 'firework';
     fireworksContainer.appendChild(firework);
@@ -86,17 +86,17 @@ function animateFirework(firework) {
   firework.style.left = `${x}px`;
   firework.style.top = `${y}px`;
   firework.style.opacity = '1';
-  firework.style.transition = 'opacity 1s ease-out, transform 1s ease-out';
+  firework.style.transition = 'opacity 1.5s ease-out, transform 1.5s ease-out'; // เพิ่มระยะเวลา transition
   firework.style.transform = 'scale(2)';
 
   setTimeout(() => {
     firework.style.opacity = '0';
     firework.style.transform = 'scale(0)';
-  }, 1000);
+  }, 1500);  // เพิ่มระยะเวลาแสดงผล
 
   setTimeout(() => {
     fireworksContainer.removeChild(firework);
-  }, 2000);
+  }, 3000);  // เพิ่มระยะเวลาลบหลังแสดงผล
 }
 
 spinBtn.addEventListener('click', startSpin);
