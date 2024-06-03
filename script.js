@@ -7,7 +7,7 @@ const ctx = wheel.getContext('2d');
 const fireworksContainer = document.getElementById('fireworks-container');
 
 const prizes = [50, 100, 150, 200, 250, 300, 350];
-const colors = ['#FF0000', '#FFD700','#FF0000'];  // สีแดงและสีทอง
+const colors = ['#FF0000', '#FFD700', '#FF0000'];  // สีแดงและสีทอง
 const segments = prizes.length;
 const arc = 2 * Math.PI / segments;
 let startAngle = 0;
