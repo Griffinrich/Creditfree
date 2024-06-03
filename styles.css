@@ -5,23 +5,29 @@ body {
   align-items: center;
   height: 100vh;
   margin: 0;
+  font-family: Arial, sans-serif;
 }
 
 .container {
   position: relative;
+  text-align: center;
 }
 
-.wheel {
-  width: 200px;
-  height: 200px;
-  background-image: conic-gradient(#ff7f50, #ffa07a, #20b2aa, #87ceeb, #00ff7f, #f08080);
-  border-radius: 50%;
-  animation: spin 4s infinite linear;
+.wheel-container {
+  position: relative;
+  display: inline-block;
 }
 
-@keyframes spin {
-  0% { transform: rotate(0deg); }
-  100% { transform: rotate(360deg); }
+.arrow {
+  width: 0; 
+  height: 0; 
+  border-left: 20px solid transparent;
+  border-right: 20px solid transparent;
+  border-bottom: 30px solid #333;
+  position: absolute;
+  top: -30px;
+  left: 50%;
+  transform: translateX(-50%);
 }
 
 button {
