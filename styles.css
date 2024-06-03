@@ -13,11 +13,7 @@ body {
   text-align: center;
 }
 
-.title { /* เพิ่มคลาสนี้ */
-  color: #fff;
-  background-color: #4682b4;
-  padding: 10px;
-  border-radius: 10px;
+.title {
   margin-bottom: 20px;
 }
 
