@@ -4,9 +4,10 @@ const resultText = document.getElementById('resultText');
 const resultForm = document.getElementById('resultForm');
 const wheel = document.getElementById('wheel');
 const ctx = wheel.getContext('2d');
+const fireworksContainer = document.getElementById('fireworks-container');
 
 const prizes = [50, 100, 150, 200, 250, 300, 350];
-const colors = ['#ff7f50', '#ffa07a', '#20b2aa', '#87ceeb', '#00ff7f', '#f08080', '#ffa500'];
+const colors = ['#FF7F50', '#FFA07A', '#20B2AA', '#87CEEB', '#00FF7F', '#F08080', '#FFA500'];
 const segments = prizes.length;
 const arc = 2 * Math.PI / segments;
 let startAngle = 0;
@@ -29,6 +30,7 @@ function drawWheel() {
     ctx.translate(wheel.width / 2, wheel.height / 2);
     ctx.rotate(angle + arc / 2);
     ctx.fillStyle = 'white';
+    ctx.font = 'bold 18px Arial';
     ctx.fillText(prizes[i], wheel.width / 4, 0);
     ctx.restore();
   }
@@ -43,7 +45,7 @@ function rotateWheel() {
   if (spinTime >= spinTimeTotal) {
     stopRotateWheel();
   } else {
-    spinTimeout = setTimeout('rotateWheel()', 30);
+    spinTimeout = setTimeout(rotateWheel, 30);
   }
 }
 
@@ -54,6 +56,7 @@ function stopRotateWheel() {
   const prize = prizes[index];
   resultText.textContent = `ยินดีด้วย! คุณได้รับเครดิตฟรี ${prize} บาท`;
   resultPopup.style.display = 'block';
+  showFireworks();
 }
 
 function startSpin() {
@@ -61,6 +64,39 @@ function startSpin() {
   spinTime = 0;
   spinTimeTotal = Math.random() * 3 + 4 * 1000;
   rotateWheel();
+}
+
+function showFireworks() {
+  for (let i = 0; i < 10; i++) {
+    const firework = document.createElement('div');
+    firework.className = 'firework';
+    fireworksContainer.appendChild(firework);
+    animateFirework(firework);
+  }
+}
+
+function animateFirework(firework) {
+  const size = Math.random() * 50 + 50;
+  const x = Math.random() * window.innerWidth;
+  const y = Math.random() * window.innerHeight;
+
+  firework.style.width = `${size}px`;
+  firework.style.height = `${size}px`;
+  firework.style.background = `radial-gradient(circle, rgba(255,255,255,1) 0%, rgba(255,255,255,0) 70%)`;
+  firework.style.left = `${x}px`;
+  firework.style.top = `${y}px`;
+  firework.style.opacity = '1';
+  firework.style.transition = 'opacity 1s ease-out, transform 1s ease-out';
+  firework.style.transform = 'scale(2)';
+
+  setTimeout(() => {
+    firework.style.opacity = '0';
+    firework.style.transform = 'scale(0)';
+  }, 100);
+
+  setTimeout(() => {
+    fireworksContainer.removeChild(firework);
+  }, 1100);
 }
 
 spinBtn.addEventListener('click', startSpin);
