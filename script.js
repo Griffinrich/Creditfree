@@ -7,7 +7,7 @@ const ctx = wheel.getContext('2d');
 const fireworksContainer = document.getElementById('fireworks-container');
 
 const prizes = [50, 100, 150, 200, 250, 300, 350];
-const colors = ['#FF0000', '#FFD700', '#FFFFFF'];  // สีแดง สีทอง และสีขาว
+const colors = ['#FFD700', '#CD7F32', '#FFFFFF', '#FF4500', '#FF6347', '#FFD700', '#CD7F32'];
 const segments = prizes.length;
 const arc = 2 * Math.PI / segments;
 let startAngle = 0;
@@ -21,7 +21,7 @@ function drawWheel() {
   ctx.clearRect(0, 0, wheel.width, wheel.height);
   for (let i = 0; i < segments; i++) {
     const angle = startAngle + i * arc;
-    ctx.fillStyle = colors[i % colors.length];
+    ctx.fillStyle = colors[i];
     ctx.beginPath();
     ctx.arc(wheel.width / 2, wheel.height / 2, wheel.width / 2, angle, angle + arc, false);
     ctx.lineTo(wheel.width / 2, wheel.height / 2);
@@ -30,8 +30,8 @@ function drawWheel() {
     ctx.translate(wheel.width / 2, wheel.height / 2);
     ctx.rotate(angle + arc / 2);
     ctx.fillStyle = 'black';
-    ctx.font = 'bold 16px Arial';
-    ctx.fillText(`฿${prizes[i]}`, wheel.width / 4, 0);
+    ctx.font = 'bold 18px Arial';
+    ctx.fillText(prizes[i], wheel.width / 4, 0);
     ctx.restore();
   }
 }
@@ -67,7 +67,7 @@ function startSpin() {
 }
 
 function showFireworks() {
-  for (let i = 0; i < 20; i++) {
+  for (let i = 0; i < 10; i++) {
     const firework = document.createElement('div');
     firework.className = 'firework';
     fireworksContainer.appendChild(firework);
@@ -76,4 +76,36 @@ function showFireworks() {
 }
 
 function animateFirework(firework) {
-  const size = Math.random() * 50 + 50
+  const size = Math.random() * 50 + 50;
+  const x = Math.random() * window.innerWidth;
+  const y = Math.random() * window.innerHeight;
+
+  firework.style.width = `${size}px`;
+  firework.style.height = `${size}px`;
+  firework.style.background = `radial-gradient(circle, rgba(255,255,255,1) 0%, rgba(255,255,255,0) 70%)`;
+  firework.style.left = `${x}px`;
+  firework.style.top = `${y}px`;
+  firework.style.opacity = '1';
+  firework.style.transition = 'opacity 1s ease-out, transform 1s ease-out';
+  firework.style.transform = 'scale(2)';
+
+  setTimeout(() => {
+    firework.style.opacity = '0';
+    firework.style.transform = 'scale(0)';
+  }, 100);
+
+  setTimeout(() => {
+    fireworksContainer.removeChild(firework);
+  }, 1100);
+}
+
+spinBtn.addEventListener('click', startSpin);
+
+resultForm.addEventListener('submit', (e) => {
+  e.preventDefault();
+  const username = document.getElementById('username').value;
+  alert(`ยินดีด้วย ${username}! คุณได้รับรางวัลเรียบร้อยแล้ว`);
+  window.location.href = 'https://lin.ee/WXS8t3t';
+});
+
+drawWheel();
