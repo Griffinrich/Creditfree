@@ -1,24 +1,4 @@
-body {
-  background-color: #f0f8ff;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  height: 100vh;
-  margin: 0;
-  font-family: Arial, sans-serif;
-}
-
-.container {
-  position: relative;
-  text-align: center;
-}
-
-h1 {
-  margin-bottom: 20px;
-  font-size: 24px;
-  color: #333;
-}
-
+/* เปลี่ยนสีของวงล้อ */
 .wheel-container {
   position: relative;
   display: inline-block;
@@ -36,14 +16,14 @@ h1 {
   transform: translateX(-50%);
 }
 
-button {
-  margin-top: 20px;
-  padding: 10px 20px;
-  background-color: #FFD700;
-  color: #fff;
-  border: none;
-  border-radius: 5px;
-  cursor: pointer;
+/* สีของวงล้อแต่ละส่วน */
+.wheel-container canvas {
+  background-color: #FFFFFF;
+}
+
+/* เปลี่ยนสีของตัวเลขในวงล้อ */
+.wheel-container canvas {
+  color: #FFD700;
 }
 
 .popup {
@@ -52,7 +32,7 @@ button {
   left: 50%;
   transform: translate(-50%, -50%);
   padding: 20px;
-  background-color: #87cefa;
+  background-color: #FF0000;
   border-radius: 10px;
   display: none;
 }
@@ -79,7 +59,7 @@ button {
   align-self: flex-end;
 }
 
-/* Fireworks CSS */
+/* เพิ่มเอฟเฟกต์พลุ */
 #fireworks-container {
   position: fixed;
   top: 0;
